@@ -21,15 +21,21 @@ const LoginPage = () => {
     setError('');
     setIsLoading(true);
     try {
-      const response = await fetch('/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ usernameOrEmail, password }),
-      });
+      // const response = await fetch('/api/v1/auth/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ usernameOrEmail, password }),
+      // });
+      //Mock object
+      const response = {
+        ok: true,
+        token:"token"
+      }
       if (response.ok) {
-        const data = await response.json();
+       // const data = await response.json();
+        const data =  response.json();
         setUserToken(data.token);
         navigate('/user-panel');
       } else {
