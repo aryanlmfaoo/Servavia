@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg'
+import LoginPage from '../pages/LoginPage'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +28,6 @@ const Nav = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          {/* Logo Section */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 flex items-center justify-center transform transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
               <img src={logo} alt="logo" />
@@ -65,7 +65,7 @@ const Nav = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <button className="px-4 py-2 text-gray-600 hover:text-purple-600 transition-colors duration-300">
-              Login
+              <Link to='/LoginPage'>Login</Link>
             </button>
             <button className="px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
               Get Started
