@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-
+import {Link} from 'react-router-dom';
 const CTA = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
@@ -22,7 +22,7 @@ const CTA = () => {
               whileTap={{ scale: 0.95 }}
               className="px-12 py-6 text-xl font-semibold text-white rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 hover:from-blue-500 hover:via-purple-600 hover:to-pink-600 transform transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              Start Your Healing Journey
+              <Link to='/UserRegister'>Start Your Healing Journey</Link>
             </motion.button>
 
             <p className="mt-6 text-sm text-gray-500">
