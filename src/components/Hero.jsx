@@ -49,7 +49,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-500 hover:to-purple-600 transform transition-all duration-200 shadow-lg hover:shadow-xl"
           >
-           <Link to={SignupPage}> Start Your Journey</Link>
+            <Link to="/SignupPage">Start Your Journey</Link>
           </motion.button>
         </div>
       </div>
