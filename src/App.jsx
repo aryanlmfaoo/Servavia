@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import ChatbotSection from './components/ChatbotSection';
-import Testimonials from './components/Testimonials';
-import CTA from './components/CTA';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import FAQ from './pages/FAQ';
+import Contact from './pages/Contact';
+import Nav from './components/Nav';
 import './App.css';
 
 function App() {
@@ -16,13 +17,17 @@ function App() {
   }, []);
 
   return (
-    <main className="overflow-hidden">
-      <Hero />
-      <Features />
-      <ChatbotSection />
-      <Testimonials />
-      <CTA />
-    </main>
+    <Router>
+      <main className="overflow-hidden">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
