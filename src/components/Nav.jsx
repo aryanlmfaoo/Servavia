@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg'
-import LoginPage from '../pages/LoginPage'
+import UserRegister from '../pages/UserRegister'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,7 +68,7 @@ const Nav = () => {
               <Link to='/LoginPage'>Login</Link>
             </button>
             <button className="px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
-            <Link to='/SignupPage'>Get Started</Link>
+              <Link to='/UserRegister'>Get Started</Link>
             </button>
           </div>
 

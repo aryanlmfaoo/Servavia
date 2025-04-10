@@ -28,9 +28,10 @@ const LoginPage = () => {
       //   },
       //   body: JSON.stringify({ usernameOrEmail, password }),
       // });
+
       //Mock object
       const response = {
-        ok: true,
+        ok: "true",
         token:"token"
       }
       if (response.ok) {

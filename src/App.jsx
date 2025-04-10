@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 import LoginPage from './pages/LoginPage';
 import UserPanel from './pages/UserPanel';
 import Nav from './components/Nav';
-import SignupPage from './pages/SignupPage';
+import UserRegister from './pages/UserRegister';
 import ForgetPassword from './pages/ForgetPassword';
 import JournalPage from './pages/JournalPage';
 import './App.css';
@@ -31,7 +31,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
-        <Route path="/SignupPage" element={<SignupPage />} />
+        <Route path="/UserRegister" element={<UserRegister />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/journal" element={<JournalPage />} />
       </Routes>
