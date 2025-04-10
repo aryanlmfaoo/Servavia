@@ -68,7 +68,7 @@ const Nav = () => {
               <Link to='/LoginPage'>Login</Link>
             </button>
             <button className="px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
-              Get Started
+            <Link to='/SignupPage'>Get Started</Link>
             </button>
           </div>
 

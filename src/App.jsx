@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import LoginPage from './pages/LoginPage';
 import UserPanel from './pages/UserPanel';
 import Nav from './components/Nav';
+import SignupPage from './pages/SignupPage';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
+        <Route path="/SignupPage" element={<SignupPage />} />
       </Routes>
     </main>
   );
