@@ -31,13 +31,15 @@ const TherapistRegister = () => {
   const languageOptions = ['ENGLISH', 'HINDI', 'SPANISH', 'FRENCH', 'MANDARIN', 'ARABIC'];
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value, type, checked } = e.target;
     
-    if (type === 'select-multiple') {
-      const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+    if (type === 'checkbox') {
+      const itemValue = e.target.getAttribute('data-value');
       setFormData(prev => ({
         ...prev,
-        [name]: selectedOptions
+        [name]: checked 
+          ? [...prev[name], itemValue]
+          : prev[name].filter(item => item !== itemValue)
       }));
     } else {
       setFormData(prev => ({
@@ -76,7 +78,7 @@ const TherapistRegister = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 pt-25">
       {/* Animated background elements */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -266,61 +268,55 @@ const TherapistRegister = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="spokenLanguages" className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700">
                     Spoken Languages
                   </label>
-                  <div className="mt-1 relative">
-                    <select
-                      multiple
-                      id="spokenLanguages"
-                      name="spokenLanguages"
-                      value={formData.spokenLanguages}
-                      onChange={handleChange}
-                      className="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white"
-                      required
-                      size={4}
-                    >
-                      {languageOptions.map(lang => (
-                        <option 
-                          key={lang} 
-                          value={lang}
-                          className="py-2 px-3 hover:bg-purple-50 cursor-pointer"
-                        >
-                          {lang}
-                        </option>
-                      ))}
-                    </select>
-                    <p className="mt-1 text-xs text-gray-500">Hold Ctrl/Cmd to select multiple languages</p>
+                  <div className="mt-3 space-y-2">
+                    {languageOptions.map(lang => (
+                      <label
+                        key={lang}
+                        className="inline-flex items-center mr-4 mb-2"
+                      >
+                        <input
+                          type="checkbox"
+                          name="spokenLanguages"
+                          data-value={lang}
+                          checked={formData.spokenLanguages.includes(lang)}
+                          onChange={handleChange}
+                          className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded transition-colors duration-200"
+                        />
+                        <span className="ml-2 text-sm text-gray-700">{lang}</span>
+                      </label>
+                    ))}
                   </div>
+                  <p className="mt-1 text-xs text-gray-500">Select all languages you can communicate in</p>
                 </div>
 
                 <div>
-                  <label htmlFor="specialties" className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700">
                     Specialties
                   </label>
-                  <div className="mt-1 relative">
-                    <select
-                      multiple
-                      id="specialties"
-                      name="specialties"
-                      value={formData.specialties}
-                      onChange={handleChange}
-                      className="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white"
-                      required
-                      size={4}
-                    >
-                      {specialtyOptions.map(specialty => (
-                        <option 
-                          key={specialty} 
-                          value={specialty}
-                          className="py-2 px-3 hover:bg-purple-50 cursor-pointer"
-                        >
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {specialtyOptions.map(specialty => (
+                      <label
+                        key={specialty}
+                        className="inline-flex items-center group cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          name="specialties"
+                          data-value={specialty}
+                          checked={formData.specialties.includes(specialty)}
+                          onChange={handleChange}
+                          className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded transition-colors duration-200"
+                        />
+                        <span className="ml-2 text-sm text-gray-700 group-hover:text-purple-600 transition-colors duration-200">
                           {specialty}
-                        </option>
-                      ))}
-                    </select>
-                    <p className="mt-1 text-xs text-gray-500">Hold Ctrl/Cmd to select multiple specialties</p>
+                        </span>
+                      </label>
+                    ))}
                   </div>
+                  <p className="mt-1 text-xs text-gray-500">Select all areas you specialize in</p>
                 </div>
               </div>
             </div>

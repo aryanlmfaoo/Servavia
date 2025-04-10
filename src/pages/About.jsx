@@ -57,7 +57,7 @@ const team = [
 
 const About = () => {
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="bg-gradient-to-br from-purple-50 to-blue-50 pt-20">
       {/* Hero Section */}
       <section className="pt-20 pb-16">
         <div className="container mx-auto px-6">
