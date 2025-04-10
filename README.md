@@ -1,12 +1,39 @@
-# React + Vite
+# 🌿 Seravia – Your All-in-One Mental Health Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Match. Reflect. Heal.**  
+Seravia is a modern mental wellness platform designed to help users navigate their mental health journey. Through a blend of self-reflection tools, emotional insight powered by AI, and therapist matching, Seravia empowers you to take charge of your inner world — all in one place.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 📝 **Guided Journaling**  
+  Reflect through structured and open-ended journaling prompts to explore your thoughts and emotions.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🤖 **AI-Powered Emotional Insights**  
+  Analyze journal entries and receive emotional feedback and trends using natural language processing.
+
+- 🧠 **Therapist Matching**  
+  Get matched with therapists based on your symptoms, preferences, and mental health goals.
+
+- 🔒 **Privacy-First Architecture**  
+  Your entries are end-to-end encrypted. You control your data.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher recommended)
+- npm or yarn
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/seravia.git
+cd seravia
+npm run dev	Start development server
+npm run build	Build for production
+npm run preview	Preview production build locally
+npm run lint	Run ESLint (if configured)
