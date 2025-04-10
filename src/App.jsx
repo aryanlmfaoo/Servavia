@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import UserPanel from './pages/UserPanel';
 import Nav from './components/Nav';
 import SignupPage from './pages/SignupPage';
+import ForgetPassword from './pages/ForgetPassword';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
         <Route path="/SignupPage" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} />
       </Routes>
     </main>
   );
