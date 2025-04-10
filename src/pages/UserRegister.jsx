@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { motion } from 'framer-motion';
+import TherapistRegister from './TherapistRegister';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const SignupPage = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
+    firstName: '',
+    lastName: '',
     password: '',
     preferences: {
       reportFrequency: 'DAILY',
@@ -21,7 +24,7 @@ const SignupPage = () => {
       gender: 'MALE',
       remindersEnabled: true
     },
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    timezone: 'Asia/Kolkata'
   });
 
   const handleChange = (e) => {
@@ -47,24 +50,27 @@ const SignupPage = () => {
     event.preventDefault();
     setError('');
     try {
-      const response = await fetch('/api/v1/auth/register', {
+      const response = await fetch('https://4cl0s8x5-8081.inc1.devtunnels.ms/api/v1/auth/register/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData),
       });
       
       if (response.ok) {
         const data = await response.json();
+        console.log('Registration successful:', data);
         setUserToken(data.token);
         navigate('/user-panel');
       } else {
         const errorData = await response.json();
+        console.error('Registration failed:', errorData);
         setError(errorData.message || 'Registration failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Network or server error:', error);
       setError('An error occurred. Please try again later.');
     }
   };
@@ -239,6 +245,16 @@ const SignupPage = () => {
             >
               Create Account
             </button>
+          </div>
+
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">Are you a mental health professional?</p>
+            <Link 
+              to="/TherapistRegister"
+              className="mt-2 text-purple-600 hover:text-purple-800 font-medium transition-colors duration-200"
+            >
+              Register as a Therapist
+            </Link>
           </div>
         </form>
       </motion.div>

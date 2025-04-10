@@ -21,19 +21,14 @@ const LoginPage = () => {
     setError('');
     setIsLoading(true);
     try {
-      // const response = await fetch('/api/v1/auth/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ usernameOrEmail, password }),
-      // });
+      const response = await fetch('https://4cl0s8x5-8081.inc1.devtunnels.ms/v1/auth/login', {
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({ usernameOrEmail, password }),
+       });
 
-      //Mock object
-      const response = {
-        ok: "true",
-        token:"token"
-      }
       if (response.ok) {
        // const data = await response.json();
         const data =  response.json();
@@ -188,7 +183,7 @@ const LoginPage = () => {
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">
               Don't have an account?{' '}
-              <Link to="/SignupPage" className="font-medium text-purple-600 hover:text-purple-500">
+              <Link to="/UserRegister" className="font-medium text-purple-600 hover:text-purple-500">
                 Sign up now
               </Link>
             </p>

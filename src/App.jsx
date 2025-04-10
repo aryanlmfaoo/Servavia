@@ -10,6 +10,7 @@ import Nav from './components/Nav';
 import UserRegister from './pages/UserRegister';
 import ForgetPassword from './pages/ForgetPassword';
 import JournalPage from './pages/JournalPage';
+import TherapistRegister from './pages/TherapistRegister';
 import './App.css';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/UserRegister" element={<UserRegister />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/journal" element={<JournalPage />} />
+        <Route path="/TherapistRegister" element={<TherapistRegister />} />
       </Routes>
     </main>
   );
