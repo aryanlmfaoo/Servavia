@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.jpg'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,11 +28,16 @@ const Nav = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gray-200 rounded-full">
-              {/* Logo placeholder - to be filled later */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 flex items-center justify-center transform transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+              <img src={logo} alt="logo" />
             </div>
-            <span className="text-xl font-bold text-gray-800">Nomads Neural</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Seravia
+              </span>
+              <span className="text-xs text-gray-500 tracking-wider">MENTAL WELLNESS</span>
+            </div>
           </Link>
 
           {/* Navigation Links */}
@@ -41,12 +47,6 @@ const Nav = () => {
               className="text-gray-600 hover:text-purple-600 transition-colors duration-300"
             >
               About Us
-            </Link>
-            <Link
-              to="/features"
-              className="text-gray-600 hover:text-purple-600 transition-colors duration-300"
-            >
-              Features
             </Link>
             <Link
               to="/faq"
@@ -67,7 +67,7 @@ const Nav = () => {
             <button className="px-4 py-2 text-gray-600 hover:text-purple-600 transition-colors duration-300">
               Login
             </button>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-500 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg">
+            <button className="px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
               Get Started
             </button>
           </div>
