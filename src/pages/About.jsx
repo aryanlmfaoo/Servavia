@@ -20,7 +20,7 @@ const values = [
   {
     icon: '🔒',
     title: 'Privacy',
-    description: 'Your data is encrypted and protected with the highest security standards.'
+    description: 'Your private data is never shared  and is protected with the highest security standards.'
   },
   {
     icon: '🤝',

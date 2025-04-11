@@ -35,7 +35,7 @@ const FAQ = () => {
     },
     {
       question: "Is my data private and secure?",
-      answer: "Yes, we take your privacy seriously. All data is encrypted, and you have complete control over your information. You can delete your data at any time, and we never share personal information without your explicit consent."
+      answer: "Yes, we take your privacy seriously. No private data is shared, and you have complete control over your information. You can delete your data at any time, and we never share personal information without your explicit consent."
     },
     {
       question: "Can I switch therapists if needed?",

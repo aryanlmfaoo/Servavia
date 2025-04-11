@@ -1,20 +1,11 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import ProfileDropdown from './ProfileDropdown';
 import logo from '../assets/logo.jpg'
-import ProfileDropdown from './ProfileDropdown'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <motion.nav
@@ -60,12 +51,31 @@ const Nav = () => {
             >
               Contact Us
             </Link>
+            <Link
+              to="/journal"
+              className="text-gray-600 hover:text-indigo-600 transition-colors"
+            >
+              Journal
+            </Link>
+            <Link
+              to="/reports"
+              className="text-gray-600 hover:text-indigo-600 transition-colors"
+            >
+              Reports
+            </Link>
+            <Link
+              to="/therapists"
+              className="text-gray-600 hover:text-indigo-600 transition-colors"
+            >
+              Therapists
+            </Link>
           </div>
 
           {/* Profile Dropdown */}
           <div className="hidden md:flex items-center">
             <ProfileDropdown />
           </div>
+
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button className="text-gray-600 hover:text-gray-900 focus:outline-none">

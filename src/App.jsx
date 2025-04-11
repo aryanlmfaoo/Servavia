@@ -14,6 +14,8 @@ import TherapistRegister from './pages/TherapistRegister';
 import Settings from './pages/Settings';
 import ProtectedRoute from './components/ProtectedRoute';
 import AuthNavigator from './components/AuthNavigator';
+import ReportsPage from './pages/ReportsPage';
+import TherapistsPage from './pages/TherapistsPage';
 import './App.css';
 
 function App() {
@@ -46,7 +48,7 @@ function App() {
               <UserPanel />
             </ProtectedRoute>
           } />
-          <Route path="/JournalPage" element={
+          <Route path="/journal" element={
             <ProtectedRoute>
               <JournalPage />
             </ProtectedRoute>
@@ -54,6 +56,16 @@ function App() {
           <Route path="/settings" element={
             <ProtectedRoute>
               <Settings />
+            </ProtectedRoute>
+          } />
+          <Route path="/reports" element={
+            <ProtectedRoute>
+              <ReportsPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/therapists" element={
+            <ProtectedRoute>
+              <TherapistsPage />
             </ProtectedRoute>
           } />
         </Routes>
