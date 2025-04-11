@@ -37,7 +37,7 @@ const values = [
 const team = [
   {
     name: 'Ahnis Singh Aneja',
-    role: 'Lead Engineer',
+    role: 'Lead Backend Engineer',
     image: AhnisImage,
     description: 'Pioneering innovative solutions for mental health technology.'
   },
@@ -49,7 +49,7 @@ const team = [
   },
   {
     name: 'Piya Kapoor',
-    role: 'Head of Therapy',
+    role: 'Lead Frontend Engineer',
     image: Piya,
     description: 'Ensuring the highest quality of therapeutic care.'
   },

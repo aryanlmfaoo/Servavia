@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { motion } from 'framer-motion';
+import api from '../utils/api';
 
 const LoginPage = () => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
@@ -9,7 +10,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { setUserToken } = useContext(UserContext);
+  const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -21,25 +22,18 @@ const LoginPage = () => {
     setError('');
     setIsLoading(true);
     try {
-      const response = await fetch('https://4cl0s8x5-8081.inc1.devtunnels.ms/v1/auth/login', {
-        method: 'POST',
-        headers: {
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify({ usernameOrEmail, password }),
-       });
-
-      if (response.ok) {
-       // const data = await response.json();
-        const data =  response.json();
-        setUserToken(data.token);
-        navigate('/user-panel');
+      const response = await api.post('/auth/login', { usernameOrEmail, password });
+      const { token } = response.data;
+      
+      const success = await login(token);
+      if (success) {
+        navigate('/JournalPage');
       } else {
-        setError('Login failed. Please check your credentials.');
+        setError('Failed to save authentication token.');
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred. Please try again later.');
+      setError(error.response?.data?.message || 'An error occurred. Please try again later.');
     } finally {
       setIsLoading(false);
     }
@@ -64,14 +58,14 @@ const LoginPage = () => {
         <div className="absolute transform rotate-45 blur-3xl opacity-20 bg-gradient-to-r from-green-200 via-purple-300 to-blue-300 w-[800px] h-[800px] -bottom-1/4 -right-1/4"></div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-md w-full space-y-8 relative z-10"
       >
         <div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -79,7 +73,7 @@ const LoginPage = () => {
           >
             Welcome Back
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
