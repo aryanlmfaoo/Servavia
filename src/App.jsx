@@ -16,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AuthNavigator from './components/AuthNavigator';
 import ReportsPage from './pages/ReportsPage';
 import TherapistsPage from './pages/TherapistsPage';
+import ResetPassword from './pages/ResetPassword';
 import './App.css';
 
 function App() {
@@ -39,8 +40,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/UserRegister" element={<UserRegister />} />
-          <Route path="/forgot-password" element={<ForgetPassword />} />
           <Route path="/TherapistRegister" element={<TherapistRegister />} />
+          <Route path="/forgot-password" element={<ForgetPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           
           {/* Protected Routes */}
           <Route path="/user-panel" element={
