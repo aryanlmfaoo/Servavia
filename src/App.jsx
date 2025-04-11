@@ -11,6 +11,7 @@ import UserRegister from './pages/UserRegister';
 import ForgetPassword from './pages/ForgetPassword';
 import JournalPage from './pages/JournalPage';
 import TherapistRegister from './pages/TherapistRegister';
+import Settings from './pages/Settings';
 import ProtectedRoute from './components/ProtectedRoute';
 import AuthNavigator from './components/AuthNavigator';
 import './App.css';
@@ -48,6 +49,11 @@ function App() {
           <Route path="/JournalPage" element={
             <ProtectedRoute>
               <JournalPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/settings" element={
+            <ProtectedRoute>
+              <Settings />
             </ProtectedRoute>
           } />
         </Routes>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg'
-import UserRegister from '../pages/UserRegister'
+import ProfileDropdown from './ProfileDropdown'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,16 +62,10 @@ const Nav = () => {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="px-4 py-2 text-gray-600 hover:text-purple-600 transition-colors duration-300">
-              <Link to='/LoginPage'>Login</Link>
-            </button>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
-              <Link to='/UserRegister'>Get Started</Link>
-            </button>
+          {/* Profile Dropdown */}
+          <div className="hidden md:flex items-center">
+            <ProfileDropdown />
           </div>
-
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button className="text-gray-600 hover:text-gray-900 focus:outline-none">
