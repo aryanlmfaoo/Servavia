@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { motion } from 'framer-motion';
-import TherapistRegister from './TherapistRegister';
+import api from '../utils/api';
 
 const SignupPage = () => {
   const navigate = useNavigate();
-  const { setUserToken } = useContext(UserContext);
+  const { login } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const SignupPage = () => {
       gender: 'MALE',
       remindersEnabled: true
     },
-    timezone: 'Asia/Kolkata'
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
   });
 
   const handleChange = (e) => {
@@ -50,34 +50,25 @@ const SignupPage = () => {
     event.preventDefault();
     setError('');
     try {
-      const response = await fetch('https://4cl0s8x5-8081.inc1.devtunnels.ms/api/v1/auth/register/user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await api.post('/auth/register/user', formData);
+      const { token } = response.data;
       
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Registration successful:', data);
-        setUserToken(data.token);
-        navigate('/user-panel');
+      // Use the login function from context to properly set the token and auth state
+      const success = await login(token);
+      if (success) {
+        navigate('/JournalPage');
       } else {
-        const errorData = await response.json();
-        console.error('Registration failed:', errorData);
-        setError(errorData.message || 'Registration failed. Please try again.');
+        setError('Failed to save authentication token.');
       }
     } catch (error) {
-      console.error('Network or server error:', error);
-      setError('An error occurred. Please try again later.');
+      console.error('Error:', error);
+      setError(error.response?.data?.message || 'An error occurred. Please try again later.');
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl"
@@ -99,6 +90,36 @@ const SignupPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Basic Information */}
             <div className="space-y-6">
+              <div>
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                  required
+                />
+              </div>
+
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                   Username
@@ -184,6 +205,7 @@ const SignupPage = () => {
                 >
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
+                  <option value="NON_BINARY">Non-Binary</option>
                   <option value="OTHER">Other</option>
                 </select>
               </div>
@@ -199,9 +221,14 @@ const SignupPage = () => {
                   onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 >
+                  <option value="FRIENDLY">Friendly</option>
+                  <option value="REALISTIC">Realistic</option>
                   <option value="MOTIVATIONAL">Motivational</option>
-                  <option value="PRACTICAL">Practical</option>
-                  <option value="EMPATHETIC">Empathetic</option>
+                  <option value="MINDFUL">Mindful</option>
+                  <option value="ANALYTICAL">Analytical</option>
+                  <option value="COMPASSIONATE">Compassionate</option>
+                  <option value="HUMOROUS">Humorous</option>
+                  <option value="EXISTENTIAL">Existential</option>
                 </select>
               </div>
 
@@ -249,7 +276,7 @@ const SignupPage = () => {
 
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">Are you a mental health professional?</p>
-            <Link 
+            <Link
               to="/TherapistRegister"
               className="mt-2 text-purple-600 hover:text-purple-800 font-medium transition-colors duration-200"
             >
